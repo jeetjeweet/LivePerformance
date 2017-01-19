@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Bestelling.cs" />
-    <Compile Include="Database\Datacom.cs" />
     <Compile Include="Enum\Bodem.cs" />
     <Compile Include="Database\Interfaces\IBestellingContext.cs" />
     <Compile Include="Database\Interfaces\IIngrediëntContext.cs" />
