@@ -14,7 +14,7 @@ namespace Pizzeria.Database.Interfaces
         bool OpenConnection();
         void CloseConnection();
         List<Ingrediënt> GetAll();
-        bool Edit(Ingrediënt ingredient);
+        bool Edit(Ingrediënt ingredient,Ingrediënt nieuwingredient);
         bool Delete(Ingrediënt ingredient);
         bool AddIngrediënt(Ingrediënt ingrediënt);
         double GetID(Ingrediënt ingredient);

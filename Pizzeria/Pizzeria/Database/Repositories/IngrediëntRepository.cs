@@ -20,9 +20,9 @@ namespace Pizzeria.Database.Repositories
         {
             return ingredientcontext.GetAll();
         }
-        public bool Edit(Ingrediënt ingredient)
+        public bool Edit(Ingrediënt ingredient,Ingrediënt nieuwingredient)
         {
-            return ingredientcontext.Edit(ingredient);
+            return ingredientcontext.Edit(ingredient,nieuwingredient);
         }
         public bool Delete(Ingrediënt ingredient)
         {

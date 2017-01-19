@@ -69,13 +69,17 @@ namespace Pizzeria.Database.MSSQL
             }
         }
 
-        public bool Edit(Ingrediënt ingredient)
+        public bool Edit(Ingrediënt ingredient,Ingrediënt nieuwingredient)
         {
+            double id = GetID(ingredient);
+            string inkoop = Convert.ToString(nieuwingredient.inkoopprijs).Replace(",", ".");
+            string verkoop = Convert.ToString(nieuwingredient.verkoopprijs).Replace(",", ".");
             try
             {
                 if (OpenConnection())
                 {
-
+                    command = new SqlCommand("update ingrediënt set naam = '" + nieuwingredient.naam + "' , inkoop = " + inkoop + ", verkoop = " + verkoop + " where id = " + id + ";", connect);
+                    command.ExecuteNonQuery();
                 }
                 return true;
             }
@@ -114,11 +118,13 @@ namespace Pizzeria.Database.MSSQL
 
         public bool AddIngrediënt(Ingrediënt ingrediënt)
         {
+            string inkoop = Convert.ToString(ingrediënt.inkoopprijs).Replace(",",".");
+            string verkoop = Convert.ToString(ingrediënt.verkoopprijs).Replace(",",".");
             try
             {
                 if (OpenConnection())
                 {
-                    command = new SqlCommand("insert into ingrediënt (naam,inkoop,verkoop) values ('" + ingrediënt.naam + "'," + ingrediënt.inkoopprijs + "," + ingrediënt.verkoopprijs + ");", connect);
+                    command = new SqlCommand("insert into ingrediënt (naam,inkoop,verkoop) values ('" + ingrediënt.naam + "'," + inkoop + "," + verkoop + ");", connect);
                     command.ExecuteNonQuery();
                 }
                 return true;

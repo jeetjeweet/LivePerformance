@@ -19,9 +19,9 @@ namespace Pizzeria.Database.Repositories
         {
             return productcontext.GetAll();
         }
-        public bool Edit(Product product)
+        public bool Edit(Product product,Product nieuwproduct)
         {
-            return productcontext.Edit(product);
+            return productcontext.Edit(product,nieuwproduct);
         }
         public bool Delete(Product product)
         {

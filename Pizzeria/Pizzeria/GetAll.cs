@@ -53,17 +53,25 @@ namespace Pizzeria
 
         private void btnWijzigen_Click(object sender, EventArgs e)
         {
+            int index = lbGetAll.SelectedIndex;
             if (this.soort == "Pizza")
             {
-
+                
+                
             }
             else if (this.soort == "Ingrediënt")
             {
-
+                Ingrediënt ingredient = ingredientlist[index];
+                EditIngrediënt ei = new EditIngrediënt(ingredient);
+                this.Close();
+                ei.Show();
             }
             else if (this.soort == "Product")
             {
-
+                Product product = productlist[index];
+                EditProduct ep = new EditProduct(product);
+                this.Close();
+                ep.Show();
             }
         }
 

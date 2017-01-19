@@ -14,8 +14,9 @@ namespace Pizzeria.Database.Interfaces
         bool OpenConnection();
         void CloseConnection();
         List<Product> GetAll();
-        bool Edit(Product product);
+        bool Edit(Product product,Product nieuwproduct);
         bool Delete(Product product);
         bool AddProduct(Product product);
+        int GetID(Product product);
     }
 }
