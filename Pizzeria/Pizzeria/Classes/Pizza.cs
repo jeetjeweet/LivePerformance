@@ -33,7 +33,7 @@ namespace Pizzeria
 
         public override string ToString()
         {
-            return base.ToString();
+            return naam + " | " + vorm + " | " + bodem + " | " + oppervlakte + " | " + standaard;
         }
     }
 }

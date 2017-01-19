@@ -13,5 +13,6 @@ namespace Pizzeria.Database
         SqlCommand command { get; set; }
         bool OpenConnection();
         void CloseConnection();
+        List<Pizza> GetStandardPizza();
     }
 }

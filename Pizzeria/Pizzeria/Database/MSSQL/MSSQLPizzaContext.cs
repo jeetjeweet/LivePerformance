@@ -11,8 +11,6 @@ namespace Pizzeria.Database.MSSQL
 {
     public class MSSQLPizzaContext : IPizzaContext
     {
-        PizzaRepository pizzaRepo = new PizzaRepository(new MSSQLPizzaContext());
-
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }
 
@@ -41,6 +39,35 @@ namespace Pizzeria.Database.MSSQL
         public void CloseConnection()
         {
             connect.Close();
+        }
+
+        public List<Pizza> GetStandardPizza()
+        {
+            List<Pizza> pizzalist = new List<Pizza>();
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("select * from pizza where standaard = 'Ja'",connect);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Vorm vorm = (Vorm)Enum.Parse(typeof(Vorm), Convert.ToString(reader["vorm"]));
+                        Bodem bodem = (Bodem)Enum.Parse(typeof(Bodem), Convert.ToString(reader["bodem"]));
+                        pizzalist.Add(new Pizza(Convert.ToString(reader["naam"]), vorm, bodem, Convert.ToString(reader["oppervlakte"]), true));
+                    }
+                }
+                return pizzalist;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return pizzalist;
+            }
+            finally
+            {
+                CloseConnection();
+            }
         }
     }
 }

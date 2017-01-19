@@ -63,11 +63,17 @@
     <Compile Include="Database\Repositories\KlantRepository.cs" />
     <Compile Include="Database\Repositories\PizzaRepository.cs" />
     <Compile Include="Database\Repositories\ProductRepository.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="GetAll.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="GetAll.Designer.cs">
+      <DependentUpon>GetAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Ingrediënt.cs" />
     <Compile Include="Classes\Inkoop.cs" />
@@ -77,6 +83,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enum\Vorm.cs" />
+    <EmbeddedResource Include="GetAll.resx">
+      <DependentUpon>GetAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

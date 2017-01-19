@@ -24,7 +24,7 @@ namespace Pizzeria
 
         public override string ToString()
         {
-            return base.ToString() + alcohol;
+            return naam + " | " + inkoopprijs + " | " + verkoopprijs + " | " + alcohol;
         }
     }
 }

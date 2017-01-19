@@ -21,5 +21,10 @@ namespace Pizzeria
             this.btw = btw;
             this.datum = datum;
         }
+
+        public override string ToString()
+        {
+            return prijs + " | " + totaalPrijs + " | " + btw + " | " + datum;
+        }
     }
 }

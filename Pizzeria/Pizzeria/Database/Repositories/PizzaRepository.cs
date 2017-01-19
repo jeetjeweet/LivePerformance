@@ -15,5 +15,10 @@ namespace Pizzeria.Database.Repositories
         {
             this.pizzacontext = pizzacontext;
         }
+
+        public List<Pizza> GetStandardPizza()
+        {
+            return pizzacontext.GetStandardPizza();
+        }
     }
 }
