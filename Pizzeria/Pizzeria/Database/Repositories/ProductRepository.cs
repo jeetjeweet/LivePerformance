@@ -15,5 +15,21 @@ namespace Pizzeria.Database.Repositories
         {
             this.productcontext = productcontext;
         }
+        public List<Product> GetAll()
+        {
+            return productcontext.GetAll();
+        }
+        public bool Edit(Product product)
+        {
+            return productcontext.Edit(product);
+        }
+        public bool Delete(Product product)
+        {
+            return productcontext.Delete(product);
+        }
+        public bool AddProduct(Product product)
+        {
+            return productcontext.AddProduct(product);
+        }
     }
 }

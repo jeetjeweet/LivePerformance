@@ -13,6 +13,7 @@ namespace Pizzeria
         public Bodem bodem { get; set; }
         public string oppervlakte { get; set; }
         public bool standaard { get; set; }
+        public List<Ingrediënt> ingredientlist;
 
         /// <summary>
         /// constructor
@@ -29,6 +30,7 @@ namespace Pizzeria
             this.bodem = bodem;
             this.oppervlakte = oppervlakte;
             this.standaard = standaard;
+            ingredientlist = new List<Ingrediënt>();
         }
 
         public override string ToString()

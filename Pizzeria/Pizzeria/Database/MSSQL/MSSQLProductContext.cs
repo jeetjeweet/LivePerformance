@@ -10,9 +10,7 @@ using System.Data.SqlClient;
 namespace Pizzeria.Database.MSSQL
 {
     public class MSSQLProductContext : IProductContext
-    {
-        ProductRepository productRepo = new ProductRepository(new MSSQLProductContext());
-
+    { 
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }
 
@@ -41,6 +39,111 @@ namespace Pizzeria.Database.MSSQL
         public void CloseConnection()
         {
             connect.Close();
+        }
+
+        public List<Product> GetAll()
+        {
+            List<Product> productlist = new List<Product>();
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("select * from product", connect);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        bool alcohol = false;
+                        if(Convert.ToString(reader["Alcohol"]) == "Ja")
+                        {
+                            alcohol = true;
+                        }
+                        productlist.Add(new Product(Convert.ToString(reader["Naam"]), Convert.ToDouble(reader["Inkoop"]), Convert.ToDouble(reader["Verkoop"]), alcohol));
+                    }
+                }
+                return productlist;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return productlist;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool Edit(Product product)
+        {
+            try
+            {
+                if (OpenConnection())
+                {
+
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+        public bool Delete(Product product)
+        {
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("delete from product where naam = '" + product.naam + "' and inkoop = " + product.inkoopprijs + ";", connect);
+                    command.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool AddProduct(Product product)
+        {
+            string alcohol = "";
+            if (product.alcohol == true)
+            {
+                alcohol = "Ja";
+            }
+            else
+            {
+                alcohol = "Nee";
+            }
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("insert into product (naam,inkoop,verkoop,alcohol) values ('" + product.naam + "'," + product.inkoopprijs + ", " + product.verkoopprijs + ",'" + alcohol + "');", connect);
+                    command.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
         }
     }
 }

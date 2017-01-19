@@ -12,7 +12,6 @@ namespace Pizzeria.Database.MSSQL
 {
     public class MSSQLBestellingContext : IBestellingContext
     {
-        BestellingRepository bestelRepo = new BestellingRepository(new MSSQLBestellingContext());
 
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }

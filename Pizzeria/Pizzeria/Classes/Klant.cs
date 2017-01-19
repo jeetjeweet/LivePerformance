@@ -14,6 +14,7 @@ namespace Pizzeria
         public string huisnr { get; set; }
         public string postcode { get; set; }
 
+        public List<Bestelling> bestellist;
         /// <summary>
         /// constructor
         /// </summary>
@@ -29,6 +30,7 @@ namespace Pizzeria
             this.plaats = plaats;
             this.huisnr = huisnr;
             this.postcode = postcode;
+            bestellist = new List<Bestelling>();
         }
 
         public override string ToString()

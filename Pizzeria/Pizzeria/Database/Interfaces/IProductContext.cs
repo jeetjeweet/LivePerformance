@@ -13,5 +13,9 @@ namespace Pizzeria.Database.Interfaces
         SqlCommand command { get; set; }
         bool OpenConnection();
         void CloseConnection();
+        List<Product> GetAll();
+        bool Edit(Product product);
+        bool Delete(Product product);
+        bool AddProduct(Product product);
     }
 }

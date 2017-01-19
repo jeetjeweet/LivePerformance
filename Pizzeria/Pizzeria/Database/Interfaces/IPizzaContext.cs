@@ -14,5 +14,9 @@ namespace Pizzeria.Database
         bool OpenConnection();
         void CloseConnection();
         List<Pizza> GetStandardPizza();
+        bool Edit(Pizza pizza);
+        bool Delete(Pizza pizza);
+        bool AddPizza(Pizza pizza,List<Ingrediënt> ingrediëntlist);
+        int GetID(Pizza pizza);
     }
 }

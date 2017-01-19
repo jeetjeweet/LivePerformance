@@ -11,7 +11,6 @@ namespace Pizzeria.Database.MSSQL
 {
     public class MSSQLKlantContext : IKlantContext
     {
-        KlantRepository klantRepo = new KlantRepository(new MSSQLKlantContext());
 
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }

@@ -13,6 +13,8 @@ namespace Pizzeria
         public double btw { get; set; }
         public DateTime datum { get; set; }
 
+        public List<Product> productlist;
+        public List<Pizza> pizzalist;
 
         public Bestelling(double prijs,double totaalprijs,double btw,DateTime datum)
         {
@@ -20,6 +22,8 @@ namespace Pizzeria
             this.totaalPrijs = totaalprijs;
             this.btw = btw;
             this.datum = datum;
+            productlist = new List<Product>();
+            pizzalist = new List<Pizza>();
         }
 
         public override string ToString()

@@ -13,5 +13,10 @@ namespace Pizzeria.Database.Interfaces
         SqlCommand command { get; set; }
         bool OpenConnection();
         void CloseConnection();
+        List<Ingrediënt> GetAll();
+        bool Edit(Ingrediënt ingredient);
+        bool Delete(Ingrediënt ingredient);
+        bool AddIngrediënt(Ingrediënt ingrediënt);
+        double GetID(Ingrediënt ingredient);
     }
 }

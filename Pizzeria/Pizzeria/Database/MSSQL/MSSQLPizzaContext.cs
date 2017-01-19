@@ -11,6 +11,7 @@ namespace Pizzeria.Database.MSSQL
 {
     public class MSSQLPizzaContext : IPizzaContext
     {
+        private IngrediëntRepository ingredientRepo = new IngrediëntRepository(new MSSQLIngrediëntContext());
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }
 
@@ -63,6 +64,121 @@ namespace Pizzeria.Database.MSSQL
             {
                 Console.WriteLine(ex.ToString());
                 return pizzalist;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool Edit(Pizza pizza)
+        {
+            try
+            {
+                if (OpenConnection())
+                {
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool Delete(Pizza pizza)
+        {
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("delete from pizza where naam= '" + pizza.naam + "' and bodem = '" + Convert.ToString(pizza.bodem) + "' and vorm = '" + Convert.ToString(pizza.vorm) + "' and oppervlakte ='" + pizza.oppervlakte + "' ;", connect);
+                    command.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public bool AddPizza(Pizza pizza,List<Ingrediënt> ingrediëntlist)
+        {
+            string standaard = "";
+            if(pizza.standaard == true)
+            {
+                standaard = "Ja";
+            }
+            else
+            {
+                standaard = "Nee";
+            }
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("insert into pizza (naam,vorm,bodem,oppervlakte,standaard) values ('" + pizza.naam + "','" + Convert.ToString(pizza.vorm) + "','" + Convert.ToString(pizza.bodem) + "','" + pizza.oppervlakte + "','" + standaard + "');", connect);
+                    command.ExecuteNonQuery();
+                }
+                if (OpenConnection())
+                {
+                    int pizzaid = GetID(pizza);
+                    List<double> ingredientidlist = new List<double>();
+                    foreach(Ingrediënt ingredient in ingrediëntlist)
+                    {
+                        ingredientidlist.Add(ingredientRepo.GetID(ingredient));
+                    }
+                    foreach(double id in ingredientidlist)
+                    {
+                        if (OpenConnection())
+                        {
+                            command = new SqlCommand("insert into pizzaIngrediënt (pizzaid,ingrediëntid) values (" + pizzaid + ", " + id + ")", connect);
+                            command.ExecuteNonQuery();
+                        }
+                    }
+                   
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public int GetID(Pizza pizza)
+        {
+            int id = 0;
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("select id from pizza where naam = '"+pizza.naam+ "' and bodem = '" + Convert.ToString(pizza.bodem) + "' and vorm = '" + Convert.ToString(pizza.vorm) + "' and oppervlakte ='" + pizza.oppervlakte + "' ;", connect);
+                    id = Convert.ToInt32(command.ExecuteScalar());
+                }
+                return id;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return id;
             }
             finally
             {

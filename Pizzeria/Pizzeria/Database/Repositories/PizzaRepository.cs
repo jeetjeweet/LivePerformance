@@ -20,5 +20,21 @@ namespace Pizzeria.Database.Repositories
         {
             return pizzacontext.GetStandardPizza();
         }
+        public bool Edit(Pizza pizza)
+        {
+            return pizzacontext.Edit(pizza);
+        }
+        public bool Delete(Pizza pizza)
+        {
+            return pizzacontext.Delete(pizza);
+        }
+        public bool AddPizza(Pizza pizza,List<Ingrediënt> ingrediëntlist)
+        {
+            return pizzacontext.AddPizza(pizza,ingrediëntlist);
+        }
+        public int GetID(Pizza pizza)
+        {
+            return pizzacontext.GetID(pizza);
+        }
     }
 }

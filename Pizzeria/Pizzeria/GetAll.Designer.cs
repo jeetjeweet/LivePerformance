@@ -33,6 +33,7 @@
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.btnWijzigen = new System.Windows.Forms.Button();
             this.btnVerwijderen = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lbGetAll
@@ -82,11 +83,22 @@
             this.btnVerwijderen.UseVisualStyleBackColor = true;
             this.btnVerwijderen.Click += new System.EventHandler(this.btnVerwijderen_Click);
             // 
+            // btnHome
+            // 
+            this.btnHome.Location = new System.Drawing.Point(499, 203);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(75, 34);
+            this.btnHome.TabIndex = 5;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // GetAll
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(586, 403);
+            this.ClientSize = new System.Drawing.Size(586, 265);
+            this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnVerwijderen);
             this.Controls.Add(this.btnWijzigen);
             this.Controls.Add(this.btnToevoegen);
@@ -94,7 +106,6 @@
             this.Controls.Add(this.lbGetAll);
             this.Name = "GetAll";
             this.Text = "GetAll";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GetAll_FormClosed);
             this.Load += new System.EventHandler(this.GetAll_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,5 +119,6 @@
         private System.Windows.Forms.Button btnToevoegen;
         private System.Windows.Forms.Button btnWijzigen;
         private System.Windows.Forms.Button btnVerwijderen;
+        private System.Windows.Forms.Button btnHome;
     }
 }
