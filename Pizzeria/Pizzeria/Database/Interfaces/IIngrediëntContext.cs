@@ -18,5 +18,6 @@ namespace Pizzeria.Database.Interfaces
         bool Delete(Ingrediënt ingredient);
         bool AddIngrediënt(Ingrediënt ingrediënt);
         double GetID(Ingrediënt ingredient);
+        double GetverkoopByID(int id);
     }
 }

@@ -13,5 +13,6 @@ namespace Pizzeria.Database.Interfaces
         SqlCommand command { get; set; }
         bool OpenConnection();
         void CloseConnection();
+        bool NieuweBestelling(List<Pizza> pizzalist,List<Product> productlist);
     }
 }

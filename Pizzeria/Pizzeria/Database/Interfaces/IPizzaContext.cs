@@ -18,5 +18,6 @@ namespace Pizzeria.Database
         bool Delete(Pizza pizza);
         bool AddPizza(Pizza pizza,List<Ingrediënt> ingrediëntlist);
         int GetID(Pizza pizza);
+        List<int> GetIngredientIDByPizzaID(int id);
     }
 }

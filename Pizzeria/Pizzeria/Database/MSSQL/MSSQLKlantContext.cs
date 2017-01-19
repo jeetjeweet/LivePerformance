@@ -14,7 +14,10 @@ namespace Pizzeria.Database.MSSQL
 
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }
-
+        /// <summary>
+        /// voor het openen van een connectie met de database
+        /// </summary>
+        /// <returns></returns>
         public bool OpenConnection()
         {
             connect = new SqlConnection();
@@ -37,6 +40,9 @@ namespace Pizzeria.Database.MSSQL
                 return false;
             }
         }
+        /// <summary>
+        /// voor het sluiten van de connectie met de database
+        /// </summary>
         public void CloseConnection()
         {
             connect.Close();

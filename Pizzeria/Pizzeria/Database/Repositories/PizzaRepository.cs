@@ -36,5 +36,9 @@ namespace Pizzeria.Database.Repositories
         {
             return pizzacontext.GetID(pizza);
         }
+        public List<int> GetIngredientIDByPizzaID(int id)
+        {
+            return pizzacontext.GetIngredientIDByPizzaID(id);
+        }
     }
 }

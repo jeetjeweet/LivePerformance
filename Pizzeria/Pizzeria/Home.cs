@@ -41,12 +41,16 @@ namespace Pizzeria
 
         private void btnBestelOverzicht_Click(object sender, EventArgs e)
         {
-
+            BestelOverzicht bo = new BestelOverzicht();
+            this.Hide();
+            bo.Show();
         }
 
         private void btnBestellen_Click(object sender, EventArgs e)
         {
-
+            BestelKeuze bk = new BestelKeuze();
+            this.Hide();
+            bk.Show();
         }
     }
 }

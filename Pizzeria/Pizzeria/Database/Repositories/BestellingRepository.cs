@@ -15,5 +15,9 @@ namespace Pizzeria.Database.Repositories
         {
             this.bestellingcontext = bestellingcontext;
         }
+        public bool NieuweBestelling(List<Pizza> pizzalist, List<Product> productlist)
+        {
+            return bestellingcontext.NieuweBestelling(pizzalist,productlist);
+        }
     }
 }

@@ -13,8 +13,8 @@ namespace Pizzeria
         public double btw { get; set; }
         public DateTime datum { get; set; }
 
-        public List<Product> productlist;
-        public List<Pizza> pizzalist;
+        public static List<Product> productlist;
+        public static List<Pizza> pizzalist;
 
         public Bestelling(double prijs,double totaalprijs,double btw,DateTime datum)
         {

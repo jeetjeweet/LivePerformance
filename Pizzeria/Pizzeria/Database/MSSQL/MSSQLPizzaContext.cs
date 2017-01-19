@@ -14,7 +14,10 @@ namespace Pizzeria.Database.MSSQL
         private IngrediëntRepository ingredientRepo = new IngrediëntRepository(new MSSQLIngrediëntContext());
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }
-
+        /// <summary>
+        /// voor het openen van een connectie met de database
+        /// </summary>
+        /// <returns></returns>
         public bool OpenConnection()
         {
             connect = new SqlConnection();
@@ -37,6 +40,9 @@ namespace Pizzeria.Database.MSSQL
                 return false;
             }
         }
+        /// <summary>
+        /// voor het sluiten van de connectie met de database
+        /// </summary>
         public void CloseConnection()
         {
             connect.Close();
@@ -184,6 +190,34 @@ namespace Pizzeria.Database.MSSQL
             {
                 CloseConnection();
             }
+        }
+
+        public List<int> GetIngredientIDByPizzaID(int id)
+        {
+            return new List<int>();
+        //    List<int> idlist = new List<int>();
+        //    try
+        //    {
+        //        if (OpenConnection())
+        //        {
+        //            command = new SqlCommand("select Ingrediëntid from pizzaingrediënt where pizzaid = " + id + ";", connect);
+        //            SqlDataReader reader = command.ExecuteReader();
+        //            while (reader.Read())
+        //            {
+        //                idlist.Add(Convert.ToInt32(reader["ingrediëntid"]));
+        //            }
+        //        }
+        //        return idlist;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        Console.WriteLine(ex.ToString());
+        //        return idlist;
+        //    }
+        //    finally
+        //    {
+        //        CloseConnection();
+        //    }
         }
     }
 }

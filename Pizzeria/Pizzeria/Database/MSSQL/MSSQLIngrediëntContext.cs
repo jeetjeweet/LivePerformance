@@ -14,7 +14,10 @@ namespace Pizzeria.Database.MSSQL
 
         public SqlConnection connect { get; set; }
         public SqlCommand command { get; set; }
-
+        /// <summary>
+        /// voor het openen van een connectie met de database
+        /// </summary>
+        /// <returns></returns>
         public bool OpenConnection()
         {
             connect = new SqlConnection();
@@ -37,6 +40,9 @@ namespace Pizzeria.Database.MSSQL
                 return false;
             }
         }
+        /// <summary>
+        /// voor het sluiten van de connectie met de database
+        /// </summary>
         public void CloseConnection()
         {
             connect.Close();
@@ -160,6 +166,33 @@ namespace Pizzeria.Database.MSSQL
             {
                 Console.WriteLine(ex.ToString());
                 return id;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+        }
+
+        public double GetverkoopByID(int id)
+        {
+            double verkoop = 0;
+            try
+            {
+                if (OpenConnection())
+                {
+                    command = new SqlCommand("select verkoop from ingrediënt where id = " + id + "", connect);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        verkoop = Convert.ToDouble(reader["verkoop"]);
+                    }
+                }
+                return verkoop;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return 0;
             }
             finally
             {
